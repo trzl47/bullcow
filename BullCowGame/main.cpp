@@ -23,16 +23,12 @@ bool PlayAgain(); // ask player exit or play again
 
 //entry point for application
 int main() {
-	PrintIntro();
-	
-	//getChallenge();
-
-	PlayGame();
-	while ((PlayAgain() == true)) {
+	do {
 		PrintIntro();
+		//getChallenge();
 		PlayGame();
-	}
-	//PlayAgain();
+	} while ((PlayAgain() == true));
+
 	return 0; // exit application
 }
 
