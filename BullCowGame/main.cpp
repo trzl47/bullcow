@@ -1,21 +1,19 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 // start the game
 void PrintIntro(); // introduce the game
 
 void PlayGame();
 
 // player choose difficulty
-void challengePrompt(string); // prompt user for challenge selection
-string getChallenge(); // get user Challenge
-bool checkChallenge(string); //validate Challenge input
+void challengePrompt(std::string); // prompt user for challenge selection
+std::string getChallenge(); // get user Challenge
+bool checkChallenge(std::string); //validate Challenge input
 
 // playing the game
-string getGuess(); // get user input
-bool checkGuess(string); // validate user input
+std::string getGuess(); // get user input
+bool checkGuess(std::string); // validate user input
 
 // play again?
 bool PlayAgain(); // ask player exit or play again
@@ -35,33 +33,33 @@ int main() {
 // introduce the game
 void PrintIntro() {
 	constexpr int WORLD_LENGTH = 5;
-	cout << "Welcome to Bulls and Cows, a fun word game." << endl
-		<< "Can you guess the " << WORLD_LENGTH << " Letter isogram I am thinking of?" << endl;
+	std::cout << "Welcome to Bulls and Cows, a fun word game." << std::endl
+		<< "Can you guess the " << WORLD_LENGTH << " Letter isogram I am thinking of?" << std::endl;
 	return;
 }
 
-void challengePrompt(string difficulties[]) {
+void challengePrompt(std::string difficulties[]) {
 	#define ARRAY_SIZE(array) (sizeof((array))/sizeof((array[0])))
 
 	// display prompt
-	cout << "Choose your challenge level" << endl;
-	cout << difficulties << endl;
+	std::cout << "Choose your challenge level" << std::endl;
+	std::cout << difficulties << std::endl;
 
 	for (int i = 0; i < ARRAY_SIZE(difficulties); i++)
 	{
-		cout << difficulties[i] << endl;
+		std::cout << difficulties[i] << std::endl;
 	};
 }
 
-string getChallenge() {
-	string difficulties[] = { "easy", "medium", "hard" };
+std::string getChallenge() {
+	std::string difficulties[] = { "easy", "medium", "hard" };
 
 	challengePrompt(difficulties); // display prompt
 
 	//user Challenge selection
-	string Challenge = "";
-	getline(cin, Challenge);
-	cout << "Selected " <<
+	std::string Challenge = "";
+	getline(std::cin, Challenge);
+	std::cout << "Selected " <<
 
 	//input validation
 	checkChallenge(Challenge);
@@ -70,7 +68,7 @@ string getChallenge() {
 }
 
 // validate user input for Challenge
-bool checkChallenge(string challenge) {
+bool checkChallenge(std::string challenge) {
 	bool validChallenge = false;
 
 	return validChallenge;
@@ -81,15 +79,15 @@ void PlayGame() {
 	for (int i = 1; i <= 5; i++) {
 		// get a guess from the player
 		getGuess();
-		cout << endl;
+		std::cout << std::endl;
 	}
 }
 
-string getGuess() {
-	string Guess = "";
-	cout << "Enter your answer:";
-	getline(cin, Guess);
-	cout << "You entered " << Guess << endl;
+std::string getGuess() {
+	std::string Guess = "";
+	std::cout << "Enter your answer:";
+	getline(std::cin, Guess);
+	std::cout << "You entered " << Guess << std::endl;
 	return Guess;
 }
 
@@ -101,14 +99,14 @@ bool checkGuess() {
 
 // play again?
 bool PlayAgain() {
-	cout << "Would you like to play again? (y/n)" << endl;
-	string resp = "";
-	getline(cin, resp);
+	std::cout << "Would you like to play again? (y/n)" << std::endl;
+	std::string resp = "";
+	getline(std::cin, resp);
 	if ((resp[0] == 'y') || (resp[0] == 'Y')) {
 		return true;
 	}
 	else {
-		cout << "Thanks for playing!" << endl;
+		std::cout << "Thanks for playing!" << std::endl;
 		return false;
 	}
 }
